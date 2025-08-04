@@ -9,7 +9,7 @@
     /* Light Mode - Bright Color Scheme */
     --primary-bg: #F7F7F7;          /* Cream/Beige */
     --secondary-bg: #FFFFFF;        /* Pure white for cards */
-    --accent-bg: #A8E6F1;          /* Light blue */
+    --accent-bg: #ffffff;          /* Light blue */
     --primary-color: #4ECDC4;       /* Teal */
     --secondary-color: #FF69B4;     /* Bright pink */
     --tertiary-color: #A8E6F1;     /* Light blue */
@@ -261,22 +261,31 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: var(--primary-bg);
+    background: linear-gradient(135deg, var(--primary-bg), var(--accent-bg));
     overflow: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
     .hero-section {
-        background: var(--primary-bg);
+        background: linear-gradient(135deg, var(--primary-bg), var(--accent-bg));
     }
 }
 
 .hero-section::before {
-    /* Overlay removed */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(76, 205, 196, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
 }
 
 @media (prefers-color-scheme: dark) {
-    /* Overlay removed in dark mode */
+    .hero-section::before {
+        background: radial-gradient(circle at 50% 50%, rgba(76, 205, 196, 0.2) 0%, transparent 70%);
+    }
 }
 
 .animated-background {
